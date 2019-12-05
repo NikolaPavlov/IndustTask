@@ -1,0 +1,5 @@
+{% for currency in currencies %}
+  <ul>
+    {{ currency.currency_abbr }} : {{ currency.rate_vs_base }} BGN
+  </ul>
+{% endfor %}
