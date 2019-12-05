@@ -13,5 +13,8 @@ class Currency(models.Model):
     class Meta:
         ordering = ('currency_abbr',)
 
+    def convert_to(self, currency, amount=Decimal(1)):
+        return Decimal(amount) * (self.rate_vs_base / currency.rate_vs_base)
+
     def __str__(self):
         return '{} : {}'.format(self.currency_abbr, self.rate_vs_base)

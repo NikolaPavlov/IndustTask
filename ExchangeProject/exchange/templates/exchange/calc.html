@@ -1,0 +1,24 @@
+<h1> Calculating exchange amounts </h1>
+
+
+<form type="GET" action="{% url 'exchange:calculator' %}">
+  <!-- <label for="from_currency">From Currency</label> -->
+  <input type="number" name="amount_to_conv" step=0.01>
+  <select name="from_currency">
+    {% for currency in currencies %}
+      <option value="{{currency.currency_abbr}}">{{ currency.currency_abbr }}</option>
+    {% endfor %}
+  </select>
+
+  To
+
+  <select name="to_currency">
+    {% for currency in currencies %}
+      <option value="{{ currency.currency_abbr }}">{{ currency.currency_abbr }}</option>
+    {% endfor %}
+  </select>
+
+  <input type="submit" value='Calculate'>
+</form>
+
+<h2>Result: {{ result_of_conv }}</h2>
