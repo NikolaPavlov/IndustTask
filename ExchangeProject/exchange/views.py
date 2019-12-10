@@ -1,10 +1,14 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 
 from .forms import AddCurrencyForm
 from .models import Currency
+
+
+from bs4 import BeautifulSoup
+import requests
 
 
 class AllCurrenciesListView(ListView):
@@ -42,3 +46,15 @@ def calc_exchange_rates(request):
         return JsonResponse(response_data)
     else:
         return render(request, 'exchange/calc.html', context)
+
+
+def scraper(request):
+    url = 'http://bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm'
+    r = requests.get(url)
+    html_doc = r.text
+    soup = BeautifulSoup(html_doc, "html.parser")
+
+    # table = soup.find('table')
+    # rows = soup.find_all('tr')
+
+    return HttpResponse(soup)
