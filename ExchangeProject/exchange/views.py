@@ -1,8 +1,6 @@
-import json
-
 from django.http import JsonResponse
 from django.urls import reverse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 
 from .forms import AddCurrencyForm
@@ -22,7 +20,7 @@ def add_currencies(request):
             form.save()
             return redirect(reverse('exchange:index'))
     else:
-        form =AddCurrencyForm()
+        form = AddCurrencyForm()
     return render(request, 'exchange/add_currencies.html', {'form': form})
 
 
@@ -34,8 +32,8 @@ def calc_exchange_rates(request):
 
     if request.is_ajax():
         amount_to_conv = request.GET['amount']
-        from_curr = Currency.objects.get(currency_abbr=request.GET['from_currency'])
-        to_curr = Currency.objects.get(currency_abbr=request.GET['to_currency'])
+        from_curr = get_object_or_404(Currency, currency_abbr=request.GET['from_currency'])
+        to_curr = get_object_or_404(Currency, currency_abbr=request.GET['to_currency'])
 
         result_of_conv = from_curr.convert_to(currency=to_curr, amount=amount_to_conv)
 

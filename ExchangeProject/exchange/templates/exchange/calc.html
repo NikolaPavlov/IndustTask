@@ -1,15 +1,13 @@
 {% extends 'exchange/base.html' %}
 
 
-  {% block content %}
-  {# <h1> Calculating exchange amounts </h1> #}
+{% block content %}
 
   <form class="add_currency" action="{% url 'exchange:calculator' %}" method="GET" >
-    <!-- <label for="from_currency">From Currency</label> -->
     <input type="number" name="amount_to_conv" id="amount_to_conv" step=0.000001>
     <select name="from_currency" id="from_currency">
       {% for currency in currencies %}
-        <option value="{{currency.currency_abbr}}">{{ currency.currency_abbr }}</option>
+      <option value="{{currency.currency_abbr}}">{{ currency.currency_abbr }}</option>
       {% endfor %}
     </select>
 
@@ -17,7 +15,7 @@
 
     <select name="to_currency" id="to_currency">
       {% for currency in currencies %}
-        <option value="{{ currency.currency_abbr }}">{{ currency.currency_abbr }}</option>
+      <option value="{{ currency.currency_abbr }}">{{ currency.currency_abbr }}</option>
       {% endfor %}
     </select>
 
@@ -28,8 +26,3 @@
 
 {% endblock %}
 
-
-
-{% block javascript %}
-
-{% endblock %}

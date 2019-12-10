@@ -8,7 +8,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>{% block title %} Django Exchange {% endblock %}</title>
-    {# stylesheet #}
   </head>
   <body>
     <ul>
@@ -16,54 +15,13 @@
       <a href="{% url 'exchange:calculator' %}">Calculator</a>
       <a href="{% url 'exchange:add_currencies' %}">AddCurrency</a>
     </ul>
-    {% block content %}
-    {% endblock %}
-
-    <!-- Optional JavaScript -->
+    {% block content %} {% endblock %} 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    {% block javascript %}{% endblock %}
-
-
-    <script type="text/javascript">
-      $('#submit_button').click(function(){
-        event.preventDefault();
-        console.log('form submited')
-        send_data();
-      });
-
-      function send_data(){
-        console.log("send data is working")
-        $.ajax({
-            url : "calculator",
-            type : "GET",
-            data : {
-              amount : $('#amount_to_conv').val(),
-              from_currency: $('#from_currency').val(),
-              to_currency: $('#to_currency').val()
-            }, 
-
-            // handle a successful response
-            success : function(response_data) {
-                $('#result').html("<b>Result:" + response_data.result_of_conv + "</b>")
-                console.log(response_data);
-                console.log("success");
-            },
-
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>");
-                console.log(xhr.status + ": " + xhr.responseText);
-            }
-        });
-      };
-    </script>
-
-
+    <script src="{% static "ajaxify.js" %}"></script>
   </body>
 </html>
