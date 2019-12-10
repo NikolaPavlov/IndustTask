@@ -1,6 +1,10 @@
-Index: http://localhost:8000 ---> list all exchange rates
-Calculator: http://localhost:8000/calculator ---> calculating exhcange rates
-AddCurrency: http://localhost:8000/add_currencies ---> form for adding new currency
+########
+Exchange
+########
+
++ Index: http://localhost:8000 ---> list all exchange rates
++ Calculator: http://localhost:8000/calculator ---> calculating exhcange rates
++ AddCurrency: http://localhost:8000/add_currencies ---> form for adding new currency
 
 Questions
 =========
