@@ -1,5 +1,11 @@
-{% for currency in currencies %}
-  <ul>
-    {{ currency.currency_abbr }} : {{ currency.rate_vs_base }} BGN
-  </ul>
-{% endfor %}
+{% extends 'exchange/base.html' %}
+
+
+{% block content %}
+  <h2>Exchange rates:</h2>
+  {% for currency in currencies %}
+    <ul>
+      {{ currency.currency_abbr }} : {{ currency.rate_vs_base }} BGN
+    </ul>
+  {% endfor %}
+{% endblock %}

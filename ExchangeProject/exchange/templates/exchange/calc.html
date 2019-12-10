@@ -1,24 +1,35 @@
-<h1> Calculating exchange amounts </h1>
+{% extends 'exchange/base.html' %}
 
 
-<form type="GET" action="{% url 'exchange:calculator' %}">
-  <!-- <label for="from_currency">From Currency</label> -->
-  <input type="number" name="amount_to_conv" step=0.01>
-  <select name="from_currency">
-    {% for currency in currencies %}
-      <option value="{{currency.currency_abbr}}">{{ currency.currency_abbr }}</option>
-    {% endfor %}
-  </select>
+  {% block content %}
+  {# <h1> Calculating exchange amounts </h1> #}
 
-  To
+  <form class="add_currency" action="{% url 'exchange:calculator' %}" method="GET" >
+    <!-- <label for="from_currency">From Currency</label> -->
+    <input type="number" name="amount_to_conv" id="amount_to_conv" step=0.000001>
+    <select name="from_currency" id="from_currency">
+      {% for currency in currencies %}
+        <option value="{{currency.currency_abbr}}">{{ currency.currency_abbr }}</option>
+      {% endfor %}
+    </select>
 
-  <select name="to_currency">
-    {% for currency in currencies %}
-      <option value="{{ currency.currency_abbr }}">{{ currency.currency_abbr }}</option>
-    {% endfor %}
-  </select>
+    Convert To:
 
-  <input type="submit" value='Calculate'>
-</form>
+    <select name="to_currency" id="to_currency">
+      {% for currency in currencies %}
+        <option value="{{ currency.currency_abbr }}">{{ currency.currency_abbr }}</option>
+      {% endfor %}
+    </select>
 
-<h2>Result: {{ result_of_conv }}</h2>
+    <button type="submit" class="btn btn-primary" id="submit_button">Calculate</button>
+  </form>
+
+  <h2 id="result">Result: {{ result_of_conv }}</h2>
+
+{% endblock %}
+
+
+
+{% block javascript %}
+
+{% endblock %}
