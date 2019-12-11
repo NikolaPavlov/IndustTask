@@ -1,7 +1,7 @@
 from django.utils import timezone
 from django.core.management.base import BaseCommand, CommandError
-from exchange.utils import scraper
 
+from exchange.utils import scraper
 
 
 class Command(BaseCommand):

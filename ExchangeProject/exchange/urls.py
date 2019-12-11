@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.AllCurrenciesListView.as_view(), name='index'),
     path('add_currencies', views.add_currencies, name='add_currencies'),
     path('calculator', views.calc_exchange_rates, name='calculator'),
-    path('scraper', views.scraper, name='scraper'),
+    path('scraper', views.scraper_view, name='scraper'),
 ]

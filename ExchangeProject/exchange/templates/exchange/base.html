@@ -11,12 +11,19 @@
   </head>
   <body>
     <ul>
-      <a href="{% url 'exchange:index' %}">Index</a>
-      <a href="{% url 'exchange:calculator' %}">Calculator</a>
-      <a href="{% url 'exchange:add_currencies' %}">AddCurrency</a>
-      <a href="{% url 'exchange:scraper' %}">Scraper</a>
+      <a href="{% url 'exchange:index' %}" class="btn btn-info">Index</a>
+      <a href="{% url 'exchange:calculator' %}" class="btn btn-info">Calculator</a>
+      <a href="{% url 'exchange:add_currencies' %}" class="btn btn-info">AddCurrency</a>
     </ul>
-    {% block content %} {% endblock %} 
+
+    <div class="row">
+        <div class="col">
+            <div class="mx-auto w-50 p-3 bg-dark text-white text-center">
+              {% block content %} {% endblock %} 
+            </div>
+        </div>
+    </div>
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
