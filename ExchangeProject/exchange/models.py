@@ -8,7 +8,7 @@ class Currency(models.Model):
     full_name = models.CharField(max_length=200, unique=True)
     currency_abbr = models.CharField(max_length=200, unique=True)
     rate_vs_base = models.DecimalField(max_digits=20,
-                                       decimal_places=6,  # change to 5?
+                                       decimal_places=9,  # change to 5?
                                        validators=[MinValueValidator(Decimal('0.000001'))])
 
     class Meta:
