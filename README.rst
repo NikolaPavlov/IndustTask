@@ -2,17 +2,18 @@
 Exchange
 ########
 
-+ Index: http://localhost:8000 ---> list all exchange rates
++ Index: http://localhost:8000 ---> list all exchange rates + 'Refresh Rates' button on the bottom
 + Calculator: http://localhost:8000/calculator ---> calculating exhcange rates
 + AddCurrency: http://localhost:8000/add_currencies ---> form for adding new currency
++ Custom manage.py refreshrates command ---> refresh the rates from BNB page
 
-Questions
-=========
+How to run
+==========
 
-+ How to set Base Currency?
-    + If you want BGN to be base currency add Bulgarian Lev with abbr BGN and rate 1
-+ What if I want other currency to be Base currency?
-    + Add that currency with rate 1
++ Install dependencies - pipenv install --dev
++ python manage.py makemigrations
++ python manage.py migrate
++ add base currency ( Bulgarian Lev : BGN : 1 )
 
 Notes:
 ======
