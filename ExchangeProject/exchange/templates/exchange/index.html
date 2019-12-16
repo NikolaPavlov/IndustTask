@@ -5,7 +5,8 @@
   <h2>Exchange rates:</h2>
   {% for currency in currencies %}
     <ul>
-      {{ currency.currency_abbr }} : {{ currency.rate_vs_base }}
+      1 {{ currency.currency_abbr }} : {{ currency.rate_vs_base }} BGN
     </ul>
   {% endfor %}
+  <a href="{% url 'exchange:scraper' %}" class="btn btn-danger">Refresh Rates </a>
 {% endblock %}

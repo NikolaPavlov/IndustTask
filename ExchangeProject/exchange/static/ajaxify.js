@@ -13,7 +13,7 @@ function send_data(){
             amount : $('#amount_to_conv').val(),
             from_currency: $('#from_currency').val(),
             to_currency: $('#to_currency').val()
-        }, 
+        },
 
         // handle a successful response
         success : function(response_data) {

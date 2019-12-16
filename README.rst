@@ -1,22 +1,31 @@
-########
-Exchange
-########
+=============
+Exchange TASK
+=============
 
-+ Index: http://localhost:8000 ---> list all exchange rates
-+ Calculator: http://localhost:8000/calculator ---> calculating exhcange rates
+Requirements
+============
+
+Develop one app Django project - currency exchanger.
+
++ Ability to add an exchange rates ('US Dollar', 'USD', 1.72)
++ Calculator functionality (calc 'x' amount of USD to EUR)
++ Calculation should happen with AJAX on the web page
++ Django view showing all available exchange rates
++ Management command to pull all rates from BNB website
++ Button sync now on the index page which will pull all rates from BNB website
++ In the end create Pull Reguest (Merge Request) from separate branch with some of the futures
+
+SiteMap
+=======
+
++ Index: http://localhost:8000 ---> list all exchange rates + sync exchange rates button
++ Calculator: http://localhost:8000/calculator ---> calculating exhcange rates between currencies AJAX
 + AddCurrency: http://localhost:8000/add_currencies ---> form for adding new currency
 
-Questions
-=========
-
-+ How to set Base Currency?
-    + If you want BGN to be base currency add Bulgarian Lev with abbr BGN and rate 1
-+ What if I want other currency to be Base currency?
-    + Add that currency with rate 1
 
 Notes:
 ======
 
-BNB Exchange Rates:
+BNB Exchange Rates Webpage:
 
     + http://bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm

@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 
 from .forms import AddCurrencyForm
+from .utils import scraper
 from .models import Currency
 
 
@@ -38,7 +39,12 @@ def calc_exchange_rates(request):
         result_of_conv = from_curr.convert_to(currency=to_curr, amount=amount_to_conv)
 
         response_data = {}
-        response_data['result_of_conv'] = result_of_conv
+        response_data['result_of_conv'] = round(result_of_conv,2)
         return JsonResponse(response_data)
     else:
         return render(request, 'exchange/calc.html', context)
+
+
+def scraper_view(request):
+    scraper()
+    return redirect(reverse('exchange:index'))

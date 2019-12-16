@@ -1,7 +1,8 @@
 from decimal import Decimal
 
-from .models import Currency
 from django.test import TestCase
+
+from .models import Currency
 
 
 class CurrencyTestCase(TestCase):
